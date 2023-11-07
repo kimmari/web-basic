@@ -32,42 +32,42 @@
     <script>
         const player = $('#player');
 
-        function moveRight(){
+        function moveRight() {
             const playerRight = parseInt(player.css('right'), 10);
-            if(playerRight <= 0){
+            if (playerRight <= 0) {
                 return;
             }
-            player.css({left: '+=20px'});
+            player.css({ left: '+=20px' });
         }
 
-        function moveLeft(){
+        function moveLeft() {
             const playerLeft = parseInt(player.css('left'), 10);
-            if (playerLeft <= 0){
+            if (playerLeft <= 0) {
                 return;
             }
-            player.css({left: '-=20px'});
+            player.css({ left: '-=20px' });
         }
 
-        function moveUp(){
+        function moveUp() {
             const playerTop = parseInt(player.css('top'), 10);
-            if(playerTop <= 0){
+            if (playerTop <= 0) {
                 return;
             }
-            player.css({top: '-=20px'});
+            player.css({ top: '-=20px' });
         }
 
-        function moveDown(){
+        function moveDown() {
             const playerBottom = parseInt(player.css('bottom'), 10);
-            if(playerBottom <= 0){
+            if (playerBottom <= 0) {
                 return;
             }
-            player.css({top: '+=20px'});
+            player.css({ top: '+=20px' });
         }
 
         $(document).keydown(function (event) {
             console.log(event.key);
 
-            switch(event.key){
+            switch (event.key) {
                 case 'd':
                 case 'ArrowRight':
                     moveRight();
