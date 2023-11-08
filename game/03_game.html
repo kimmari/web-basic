@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <style>
+        #stage {
+            position: relative;
+            width: 800px;
+            height: 800px;
+            border: 1px solid black;
+        }
+
+        #player {
+            position: absolute;
+            height: 50px;
+            bottom: 10px;
+            left: 10px;
+        }
+
+        #enemy {
+            position: absolute;
+            width: 50px;
+            bottom: 10px;
+            right: 10px;
+            transform: scaleX(-1);
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="stage">
+        <img src="asset/yellowStar.png" alt="" id="player">
+        <img src="asset/slime.png" alt="" id="enemy">
+    </div>
+
+    <script>
+        const player = $('#player');
+        const enemy = $('#enemy');
+
+        let isJumping = false;
+
+        function onUpdate() {
+            moveEnemy();
+        }
+
+        function moveEnemy() {
+            enemy.css({ left: '-=3px' });
+
+            const enemyLeft = pxToInt(enemy.css('left'));
+            if (enemyLeft < -100) {
+                enemyReset();
+            }
+        }
+
+        function enemyReset() {
+            enemy.css({ right: '10px' });
+        }
+
+        function jump() {
+            if (isJumping) {
+                return;
+            }
+            isJumping = true;
+            player.animate({ bottom: '+=20px' });
+            player.animate({ bottom: '-=20px' }, function () {
+                isJumping = false;
+            });
+        }
+
+        $(document).keydown(function (event) {
+            console.log(event.key);
+
+            switch (event.key) {
+                case ' ':
+                    jump();
+                    break;
+                default:
+            }
+        });
+
+        function pxToInt(pxStr) {
+            return parseInt(pxStr, 10);
+        }
+
+        setInterval(onUpdate, 1000 / 60);
+    </script>
+</body>
+
+</html>

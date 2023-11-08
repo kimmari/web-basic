@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous">
+    </script>
+
+    <style>
+        table, tr, td, th {
+            border: 1px solid gray;
+            text-align: center;
+            width: max-content;
+            padding-inline: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+
+    <script>
+        const checkAll = $('input:checkbox:first')
+        checkAll.change(function(){
+            if($(this).is(':checked')){
+                $('input:checkbox').prop('checked', true);
+            }else{
+                $('input:checkbox').prop('checked', false);
+            }
+        });
+
+        const checks = $('input:checkbox[name=board]');
+        checks.click(function(){
+            const checked = $('input:checkbox[name=board]:checked');
+            if(checked.length == checks.length){
+                checkAll.prop('checked', true);
+            }else{
+                checkAll.prop('checked', false);
+            }
+
+            $('#logButton').click(function(){
+                if(checks.length == 0){
+                    alert('선택딘 것이 없습니다');
+                }else{
+
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>
+                <input type="checkbox" name="" id="">확인
+            </th>
+            <th>제  목</th>
+            <th>글쓴시간</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="" id="">
+            </td>
+            <td>abcdefghijklmn</td>
+            <td>11:14:15</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="" id="">
+            </td>
+            <td>xyz123</td>
+            <td>11:12:22</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="" id="">
+            </td>
+            <td>qwerty</td>
+            <td>11:11:00</td>
+        </tr>
+    </table>
+    
+    <br>
+    
+    <button>로그</button>
+</body>
+</html>
