@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    This page is file No.09
+
+    <div id="result"></div>
+
+    <script>
+        const queryString = window.location.search.slice(1);
+
+        const queryParams = queryString.split('&');
+
+        let resultJson = {};
+
+        queryParams.forEach((e) => {
+            const keyValue = e.split('=');
+            const key = keyValue[0];
+            const value = keyValue[1];
+
+            resultJson[key] = decodeURIComponent(value);
+        });
+
+        console.log(resultJson);
+
+        document.getElementById('result').append(JSON.stringify(resultJson));
+    </script>
+</body>
+
+</html>
